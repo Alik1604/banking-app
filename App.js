@@ -4,13 +4,17 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomePage from './pages/HomePage';
 import CardPage from './pages/CardPage';
 import SettingsPage from './pages/SettingsPage';
-import TopUpPage from './pages/TopUpPage'
+import TopUpPage from './pages/TopUpPage';
+
+import { BlurView } from 'expo-blur';
 
 const Stack = createNativeStackNavigator();
 
+
 export default function App() {
   return (
-    <NavigationContainer >
+    
+      <NavigationContainer >
        <Stack.Navigator>
         <Stack.Screen name="Accounts" component={HomePage} 
           options={{
@@ -18,8 +22,8 @@ export default function App() {
             headerStyle: {
               backgroundColor: '#0D1F3C',
               borderBottomWidth: 0,
-              
             },
+           
             headerTintColor: '#fff',
             headerTitleStyle: {
               fontWeight: 'bold',
@@ -128,6 +132,7 @@ export default function App() {
         />
        </Stack.Navigator>
     </NavigationContainer>
+   
   );
 }
 

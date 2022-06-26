@@ -5,6 +5,8 @@ import CashBar from '../components/CashBar'
 import HeadButtons from '../components/HeadButtons';
 import CashList from '../components/CashList'
 import Footer from '../components/Footer';
+import Info from '../components/Info';
+import { BlurView } from 'expo-blur';
 
 export default function HomeScreen({ navigation }) {
   const url = 'https://vhmfz744o2.execute-api.eu-west-2.amazonaws.com/dev/data';
@@ -25,15 +27,24 @@ export default function HomeScreen({ navigation }) {
     getData();
   }, []);
 
-    return (
+  let [infoVisibility, setInfoVisibility] = useState(false);
+
+  return (
       <View style={styles.container}>
           <CashBar cash={data.balance}/>
-          <HeadButtons/>
-          <View style={styles.currList}>
-            <Text style={{fontSize:18, marginTop:20, marginLeft:32 , color:'#262F56'}}>All currency accounts</Text>
-            <CashList list={data.accounts}/>
-          </View>
-          <Footer navigation={navigation} state={'Home'}/>
+            <HeadButtons controler={setInfoVisibility}/>
+            <View style={styles.currList}>
+              <Text style={{fontSize:18, marginTop:20, marginLeft:32 , color:'#262F56'}}>All currency accounts</Text>
+              <CashList list={data.accounts}/>
+            </View>
+            <Footer navigation={navigation} state={'Home'}/>
+          {infoVisibility ?
+          <>
+            <Info controler={setInfoVisibility}></Info>
+          </>
+          :
+            null
+          }
       </View>
     );
   }

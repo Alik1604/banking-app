@@ -1,18 +1,20 @@
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { Image } from 'react-native';
 import { useEffect } from 'react';
 
-export default function HeadButtons() {
+export default function HeadButtons({controler}) {
     return (
         <View style={{marginTop:'5%', width:'90%', flex:2, flexDirection:'row',  justifyContent: 'space-between' }}>
-              <View style={{alignItems:'center' }}>
+              <TouchableOpacity onPress={() => controler(true)}>
+                <View style={{alignItems:'center' }}>
                   <View style={styles.buttonBlock1}>
                     <Image
                       source={require('../imgs/1.png')}
                     />
                   </View>
                   <Text  style={{fontSize:12, color:'#FFFFFF', marginTop:5}} >Viev details</Text>
-              </View>
+                </View>
+              </TouchableOpacity>
               <View style={{alignItems:'center'}}>
                   <View style={styles.buttonBlock2}>
                   <Image
